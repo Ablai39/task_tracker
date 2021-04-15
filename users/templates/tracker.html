@@ -1,0 +1,108 @@
+{% load static %}
+{% load bootstrap3 %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>Tracker</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/patcher.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-datepicker3.min.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static '/img/favicon.ico' %}">
+    <script type="text/javascript" src="{% static '/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/bootstrap-datepicker.min.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/bootstrap-datepicker.ru.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#Upload, #New, #Detach, #Update").click(function() {
+                $('#UploadModal, #SendModal').modal('hide');
+                $('#Main_Div').toggleClass('blur');
+                $("#Loadpage").addClass('show');
+            });
+        });
+    </script>
+    <style>
+        .loading_spinner {
+            display : none;
+        }
+
+        .loading_spinner.show {
+            display : block;
+            position : fixed;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.5);
+            background-repeat : no-repeat;
+            background-position : center;
+            left : 0;
+            bottom : 0;
+            right : 0;
+            top : 0;
+        }
+    </style>
+</head>
+<body>
+<div id="Main_Div" style="min-width: 1280px;">
+    <nav class="navbar navbar-default navbar-fixed-top" style="padding-left: 0px; padding-right: 0px; border: 0;">
+        <div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+            <div class="col-lg-4 visible-lg-block" style="min-width: 200px; padding-left: 0px; display: flex !important; flex-direction: column; justify-content: center; padding-left: 1px; height: 100%; padding-left: 10px;">
+            </div>
+            <div class="col-lg-4" style="min-width: 250px;" align="center">
+                <div class="btn-group btn-group-justified" style="max-width: 600px;">
+                    <a href="/tracker/patches" class="btn {% if nbar == 'patches' %}btn-primary{% else %}btn-default{% endif %}">
+                        <span class="visible-lg-block">Список задач</span>
+                        <span class="hidden-lg">Список задач</span>
+                    </a>
+                    <a href="/tracker/points" class="btn {% if nbar == 'points' %}btn-primary{% else %}btn-default{% endif %}">
+                        <span class="visible-lg-block">Журнал задач</span>
+                        <span class="hidden-lg">Журнал задач</span>
+                    </a>
+                    <a href="#UploadModal" data-toggle="modal" data-target="#UploadModal" class="btn btn-default">
+                        <span class="visible-lg-block">Взять задачу из очереди</span>
+                        <span class="hidden-lg">Взять задачу из очереди</span>
+                    </a>
+                </div>
+            </div>
+            <div class="patcher-navbar-right col-lg-4 visible-lg-block" style="min-width: 310px; padding-left: 0px;">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;{{ user }}</a></li>
+                    <li><a><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp;{{ project }}</a></li>
+                    <li><a href="/tracker/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Выйти</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="modal fade" id="ElementsModal" role="dialog" tabindex='-1'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Изменить количество элементов на странице</h4>
+                </div>
+                <form action="/tracker/elements_per_page/" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        {% csrf_token %}
+                        <b>Элементов на странице:</b>
+                        <input type="text" class="form-control" id="elements_per_page" name="elements_per_page"
+                               placeholder="Текущее значение: {{ elements_per_page }}">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" id="page_conf" name="page_conf" value="Применить">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div style="padding-top: 35px; padding-bottom: 35px;">
+    {% if message %}
+        <div align="center" id="message_div" class="{% if 'успешно' in message %}alert alert-success{% else %}alert alert-danger{% endif %}">{{ message }}</div>
+    {% endif %}
+    {% block patcher_tab %}{% endblock %}
+    </div>
+</div>
+<div class="loading_spinner" id="Loadpage" align="center">
+    <img src="{% static '/img/fluid-loader.gif' %}" height="110px;">
+    <p style="font-size: large; color: rgb(5, 5, 5);" align="center"><b>Производится обработка данных. Пожалуйста подождите.</b></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+{% extends 'tracker.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block patcher_tab %}
+<form action="/tracker/patches/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-xs-12 filled_div" style="padding-left: 0px; padding-right: 0px;" align="center">
+        <div class="col-xs-10 col-xs-offset-1 filter_div">
+            <div class="col-xs-6 col-xs-offset-3 filter_div">
+                <div class="col-xs-4 filter_div">
+                    <label for="selected_patch_group" class="control-label">Задача</label>
+                    <div class="input-group" id="selected_patch_group">
+                        <select class="form-control input-sm" id="patch_select_type" name="patch_select_type" style="width: 30%;">
+                            <option>P=</option>
+                            <option {% if filter_patch_select_type == 'P%' %}selected{% endif %}>P%</option>
+                            <option {% if filter_patch_select_type == '%P' %}selected{% endif %}>%P</option>
+                            <option {% if filter_patch_select_type == '%P%' %}selected{% endif %}>%P%</option>
+                            <option {% if filter_patch_select_type == 'P>=' %}selected{% endif %}>P>=</option>
+                            <option {% if filter_patch_select_type == 'P<=' %}selected{% endif %}>P<=</option>
+                        </select>
+                        <input type="text" class="form-control input-sm" id="selected_patch" name="selected_patch" placeholder="ID задачи" {% if filter_selected_patch %}value="{{ filter_selected_patch }}"{% endif %} style="width: 70%;">
+                    </div>
+                </div>
+                <div class="col-xs-4 filter_div form-group">
+                    <div class="input-group">
+                        <label for="upload_date" class="control-label">Дата</label>
+                        <input class="form-control input-sm" id="upload_date" name="upload_date" placeholder="дд.мм.гггг" type="text" {% if filter_patch_select_date %}value="{{ filter_patch_select_date }}"{% endif %} readonly>
+                    </div>
+                </div>
+                <div class="col-xs-4 filter_div">
+                    <div class="col-xs-6 filter_div" style="padding-top: 26px;">
+                        <button type="submit" class="btn btn-primary btn-block" id="SubmitFilter" name="SubmitFilter"
+                                data-toggle="tooltip" title="Применить фильтр">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="col-xs-6 filter_div" style="padding-top: 26px;">
+                        <button type="submit" id="ClearFilter" name="ClearFilter" class="btn btn-danger btn-block"
+                                data-toggle="tooltip" title="Очистить фильтр">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="token-div">
+    <h5 style="color: #6e00ff; font-size: 27px !important; margin-right: 20px;">Token:</h5>
+    <h5>{{ token }}</h5>
+</div>
+<div class="token-div" style="margin-top: 0px !important;">
+    <h5 style="color: #6e00ff; font-size: 27px !important; margin-right: 20px;">user:</h5>
+    <h5>{{ user }}</h5>
+</div>
+<div class="token-div" style="margin-top: 0px !important;">
+    <h5 style="color: #6e00ff; font-size: 27px !important; margin-right: 20px;">Token:</h5>
+    <h5>{{ pwd }}</h5>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var checkboxes = $("input[name='patch']"),
+        submitButt = $("button[id='Remove']");
+        checkboxes.click(function() {
+            $(this).closest("tr").toggleClass('active');
+            submitButt.attr("disabled", !checkboxes.is(":checked"));
+            });
+    });
+</script>
+<script>
+	$(document).ready(function(){
+		var date_input=$('input[name="upload_date"]');
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'dd.mm.yyyy',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+			language: 'ru',
+		})
+	})
+</script>
+{% endblock %}

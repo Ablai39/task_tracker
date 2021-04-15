@@ -1,0 +1,312 @@
+.navbar-default {
+	border: 1px solid #DDDDDD;
+	min-height: 35px;
+	height: 35px;
+	margin-bottom: 0px;
+}
+
+.navbar-brand {
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-header {
+	padding-left: 0px;
+}
+
+.nav-right-div {
+	padding-right: 0px;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: black;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	height: 35px;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+	color: black;
+	background-color: #e6e6e6;
+}
+
+.navbar-default .navbar-nav > .active > a {
+	color: white;
+	background-color: #fe5000;
+}
+
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+	color: white;
+	background-color: #004d39;
+}
+
+.table-responsive {
+	table-layout:fixed;
+}
+
+a {
+	color: black;
+}
+
+.inCellText {
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative; 
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 2.4em; 
+  /* place for '...' */
+  margin-right: -1em;
+  padding-right: 1em;
+}
+
+.table th {
+	text-align: center;
+}
+
+.modal-header {
+	background-color:#fe5000;
+	color: #FFFFFF;
+}
+
+.modal-dialog{
+	position: relative;
+	display: table;
+	overflow-y: auto;
+	overflow-x: auto;
+	width: auto;
+	min-width: 20%;
+	max-width: 80%;
+}
+
+body.modal-open {
+	overflow: inherit;
+	padding-right: 0 !important;
+}
+
+.nav-pills {
+	float:none;
+	margin: 0 auto;
+	display: table;
+	table-layout: fixed;
+  }
+
+.patcher_objects {
+	display:table-caption;
+}
+
+.descript {
+	background-color: #F8F8F8;
+	border:1px solid black;
+	border-color: #CCCCCC;
+	padding-top:4px;
+	padding-bottom:4px;
+	padding-left:8px;
+	padding-right:8px;
+	white-space: pre-wrap;
+}
+
+.descript_header {
+	background-color: #fd8e5a;
+}
+
+.descript_label {
+	color: white;
+	padding-left: 8px;
+	padding-top: 4px;
+}
+
+.filter_div {
+	padding-left: 1px;
+	padding-right: 1px;
+}
+
+.filled_div {
+	background-color: #F8F8F8;
+	border: 1px solid #DDDDDD;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	max-height: 100px;
+    min-height: 100px;
+}
+
+textarea {
+	resize: vertical;
+}
+
+.checkbox {
+	width:20px;
+	height:20px;
+}
+
+.status_row_test {
+	background-color: #ffffd9;
+	border-left: 12px solid #fff47a;
+}
+.table-hover tbody tr:hover.status_row_test td, .table-hover tbody tr:hover.status_row_test th {
+	background-color: #ffffbf;
+}
+.table-hover > tbody > tr.active.status_row_test td {
+	background-color: #ffffbf;
+}
+.table-hover tbody tr:hover.active.status_row_test td, .table-hover tbody tr:hover.active.status_row_test th {
+	background-color: #ffff82;
+}
+
+.status_row_done {
+	background-color: #e2ffd9;
+	border-left: 12px solid #01805a;
+}
+.table-hover tbody tr:hover.status_row_done td, .table-hover tbody tr:hover.status_row_done th {
+	background-color: #cfffbf;
+}
+.table-hover > tbody > tr.active.status_row_done td {
+	background-color: #cfffbf;
+}
+.table-hover tbody tr:hover.active.status_row_done td, .table-hover tbody tr:hover.active.status_row_done th {
+	background-color: #9fff80;
+}
+
+.status_row_rejected {
+	background-color: #ffd9d9;
+	border-left: 12px solid #ff4f4f;
+}
+.table-hover tbody tr:hover.status_row_rejected td, .table-hover tbody tr:hover.status_row_rejected th {
+	background-color: #ffbfbf;
+}
+.table-hover > tbody > tr.active.status_row_rejected td {
+	background-color: #ffbfbf;
+}
+.table-hover tbody tr:hover.active.status_row_rejected td, .table-hover tbody tr:hover.active.status_row_rejected th {
+	background-color: #ff8080;
+}
+
+.status_row_ready {
+	background-color: #d9f6ff;
+	border-left: 12px solid #2a5f6e;
+}
+.table-hover tbody tr:hover.status_row_ready td, .table-hover tbody tr:hover.status_row_ready th {
+	background-color: #bff1ff;
+}
+.table-hover > tbody > tr.active.status_row_ready td {
+	background-color: #bff1ff;
+}
+.table-hover tbody tr:hover.active.status_row_ready td, .table-hover tbody tr:hover.active.status_row_ready th {
+	background-color: #80e3ff;
+}
+
+.status_row_postponed {
+	background-color: #ffebd9;
+	border-left: 12px solid #ff9e4f;
+}
+.table-hover tbody tr:hover.status_row_postponed td, .table-hover tbody tr:hover.status_row_postponed th {
+	background-color: #ffddbf;
+}
+.table-hover > tbody > tr.active.status_row_postponed td {
+	background-color: #ffddbf;
+}
+.table-hover tbody tr:hover.active.status_row_postponed td, .table-hover tbody tr:hover.active.status_row_postponed th {
+	background-color: #ffbb80;
+}
+
+.status_row_default {
+	border-left: 12px solid #808080;
+}
+
+.status_header {
+	padding-top: 15px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+}
+
+.status_header_test {
+	background-color: #ffffd9;
+	border-bottom: 3px solid #fff47a;
+}
+
+.status_header_done {
+	background-color: #e2ffd9;
+	border-bottom: 3px solid #01805a;
+}
+
+.status_header_rejected {
+	background-color: #ffd9d9;
+	border-bottom: 3px solid #ff4f4f;
+}
+
+.status_header_ready {
+	background-color: #d9f6ff;
+	border-bottom: 3px solid #2a5f6e;
+}
+
+.status_header_postponed {
+	background-color: #ffebd9;
+	border-bottom: 3px solid #ff9e4f;
+}
+
+.status_header_default {
+	border-bottom: 3px solid #808080;
+}
+
+.blur {
+	-webkit-filter: blur(3px);
+	-moz-filter: blur(3px);
+	-o-filter: blur(3px);
+	-ms-filter: blur(3px);
+	filter: blur(3px);
+}
+
+.order_btn {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	outline: none;
+	border: 0;
+	background: transparent;
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+.separator span {
+	color: grey;
+	display: inline-block;
+	position: relative;
+}
+.separator span:before {
+	right: 100%;
+	margin-right: 15px;
+}
+.separator span:after {
+	left: 100%;
+	margin-left: 15px;
+}
+.separator span:before, .separator span:after {
+	border-bottom: 1px solid grey;
+	content: "";
+	height: 12px;
+	position: absolute;
+	top: 0;
+	width: 140px;
+}
+.doc_div {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.tab-pane {
+	white-space: pre-line;
+	background-color: white;
+	padding-bottom: 15px;
+	padding-left: 10px;
+	border: 1px solid #dbdbdb;
+	border-top: none;
+}
